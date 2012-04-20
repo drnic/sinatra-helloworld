@@ -1,5 +1,8 @@
 require 'sinatra'
   
 get '/' do
-  "Hello world! #{ENV['VCAP_SERVICES']}"
+  <<-HTML
+<p>Hello world!</p>
+<pre>#{ENV.map {|k, v| "#{k}: #{v}"}.join("\n")}</pre>
+HTML
 end
